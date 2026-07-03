@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sorteador 1 a 60</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+<h1>Sorteador de Bolas</h1>
+
+<div class="globo">
+
+    <div id="bola" class="bola">?</div>
+
+</div>
+
+<button onclick="sortear()">Sortear</button>
+
+</div>
+
+<script>
+
+function sortear(){
+
+    const bola = document.getElementById("bola");
+
+    bola.classList.add("girando");
+
+    let contador = 0;
+
+    const intervalo = setInterval(()=>{
+
+        bola.textContent = Math.floor(Math.random()*60)+1;
+
+        contador++;
+
+        if(contador==40){
+
+            clearInterval(intervalo);
+
+            const numero = Math.floor(Math.random()*60)+1;
+
+            bola.textContent = numero;
+
+            bola.classList.remove("girando");
+
+            bola.classList.add("resultado");
+
+            setTimeout(()=>{
+                bola.classList.remove("resultado");
+            },800);
+
+        }
+
+    },80);
+
+}
+
+</script>
+
+</body>
+</html>
